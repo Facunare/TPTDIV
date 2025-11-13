@@ -1,0 +1,113 @@
+A-levels
+Hospital a 200km a la redonda. Manera justa vs eficiente
+Puente antinegros
+Avenidas de paris
+Universidad de san pablo alejada de la ciudad
+Shadowban
+Ferrocarril que crea pueblos en bsas
+Atucha
+Juan del nido en ruso
+Sangre y ADN forense
+Darte un prestamo bancario o no segun amigos de facebook
+Leal y legitima: we value ur privacy -> pero guardan tu info
+Cookies
+test de covid en england -> se hisopaban, los hacian firmar un papel raro, y usaban su adn supuestamnete para aprender mas sobre salud. Encima esos datos se guardan indefinidamente
+Foto a bismarck
+Telegram y su ceo
+datos biometricos para entrar a un lugar
+que te graben mientras haces ejercicio
+pagar por privacidad-> planes por 10usd en facebook
+VPNs
+El lugar ese que se quemo y se destruyo todo atroden -> estandariza registros de la pob. de holanda. Lentz debe hacer un sistema para analizar los DNI. Luego la resistencia holandesa incendia, pero destruyebn solo el 15%.
+	El nazismo le dice a Rene que genere tarjetas de identidad (como las otras) -> usa hollerith falseadas para q no tabulen la onceava respuestas -> primer hacker
+
+Caso maria belen rodriguez -> si la buscabas en google aparecia nopor -> se decidio que la plataforma no era responsable -> y q el buscador solo era intermediario
+Caso costeja -> desindexar -> La desindexación sólo podrá ser autorizada si la información personal incluida en la página es "inadecuada, irrelevante o ya no es relevante o excesiva", y sólo si la información no reviste interés público.
+Caso natalia denegri -> la info no era falsa, era un archivo de comportamiento pasados voluntarios ->era un suceso de interes publico
+Caso alberto y fabiola -> Fernández pretende que la justicia “impida la publicación, difusión y reproducción”
+
+Caso zuckerberg -> fue presionado por casa blanca para censurar la discusion del covid usando el humor -> para abordar la desinformacion 
+	Por ejemplo, las afirmaciones de que el presidente Biden había tenido un mal desempeño en su debate con Trump fueron descartadas como desinformación por algunos medios de prensa estadounidenses de tendencia izquierdista. 
+
+
+Un tipo de newcastle sentenciado por tweets ofensivos.
+
+Snapster, libgen, y todas esas paginas piratas
+Ley pinedo -> Lo que quieren los productores de contenidos es que la ley obligue a los intermediarios a bloquear un contenido si alguien se lo pide. "Google no puede ser el comisario de Internet en el mundo"
+	Facilita pirateria por el costoso rigorismo para notificar las infracciones -> el intermediario tarda mucho en dar de baja contenido ante un aviso judicial
+
+Claps vs meli
+Dart vs craigslist
+Tema de autorregulacion
+fact-checking -> Se censura demasiado contenido inofensivo, demasiadas personas se ven injustamente encerradas en la "cárcel de Facebook"
+	delegar esa responsabilidad a organizaciones independientes de verificación de datos -> se privatizo la censura
+	ahora se aplican notas comunitarias
+
+Aaron swartz
+Libgen -> base de datos IA que usa meta para entrenar ia
+
+Connecticut (EE.UU.), 2021-2022 – Secreto comercial -> Bajo la Freedom of Information Act se pidió acceso al código fuente de un algoritmo usado por el Departamento de Niños y Familias -> solicitud fue denegada porque el software era propiedad de la empresa Mindshare
+Chile, 2023 – Servicio de Impuestos Internos (SII) -> Un contribuyente pidió acceso a información sobre cómo el big data y la minería de datos influían en las fiscalizaciones. El SII se negó, argumentando que divulgar esa información comprometería la eficacia del control fiscal y la recaudación.
+UC San Diego (EE.UU.) – Transparencia en calificaciones -> si se especificaban los criterios, los alumnos podrían “jugar” con el algoritmo en lugar de enfocarse en el aprendizaje real.
+DNN (Deep Neural Networks) -> la opacidad es lo que les permite operar.
+
+Vehículos autónomos (estudio de confianza excesiva en IA) -< Cuanto más confiaban las personas en el sistema, menos conciencia situacional mantenían.
+Algoritmos de predicción de riesgos en la justicia (EE.UU.) -> Jueces y funcionarios confiaban demasiado en las herramientas, usándolas mecánicamente para fijar condenas 
+IA en justicia penal – securitización del riesgo -> Los algoritmos asignan “riesgo” a acusados
+Medicina – algoritmos y guías clínicas -> Reguladores usan IA para autorizar tratamientos y hospitalizaciones. Los médicos deben seguir los algoritmos lo que desincentiva el pensamiento crítico.
+	Los algoritmos deberían estar al servicio de los pacientes y los médicos, no al revés.”
+
+Northeastern University (EE.UU.) – uso oculto de ChatGPT
+Peabody College (EE.UU.) – mensaje institucional con ChatGPT -> Se usó IA para redactar un correo en nombre de la comunidad tras una tragedia. -> no se reflexiona
+Cultura y educación – presión para incorporar IA
+
+Ejemplo de “ética corporativa” (datos “para el bien”) -< ¿“lo bueno” para la empresa es lo mismo que “lo bueno” para el consumidor, el ciudadano, el Estado, un menor?
+Ejemplo simple – Termify -> Cuestionamiento al uso de cookies y la captura de datos como práctica comercial estándar.
+
+La app del consentimiento -> priorizar la métrica por sobre la solución real.
+Estudio de caso: One Laptop Per Child (OLPC) en Paraguay 
+
+Declaración de Independencia del Ciberespacio (Davos, 1996) -> Proclamaba que el ciberespacio era inmaterial, inmune a soberanías y leyes estatales.- Contraste: la infraestructura material de internet demuestra lo contrario.
+Las Toninas, Buenos Aires – cables submarinos de internet -> Se eligió por condiciones geográficas favorables
+	Ejemplo de cómo internet depende de infraestructuras materiales concretas.
+Data centers en Suecia (Facebook en Luleå) -> Elegido por clima frío, electricidad barata, -> Problema legal: aunque el centro está en Suecia, no queda claro si la legislación sueca se aplica a los datos procesados allí (por sede en Irlanda).
+La “Nube” en espacios reciclados -> Noruega: minas abandonadas reconvertidas en data centers. -> Panadería de terracota reconvertida en data center.
+	Ejemplo: lo que se llama “nube” está físicamente en edificios industriales, con consumo eléctrico masivo.
+
+Caso Uber en Buenos Aires (2016) -> ¿se puede “clausurar” una aplicación como si fuera un lugar físico?
+	La jueza usó definiciones de la RAE para concluir que sí, ya que una app/web puede considerarse “texto o código asignable a un autor”.
+	Ejemplo: la tensión entre lo material (servidores en California, infraestructura física) y lo jurídico nacional.
+
+
+Revolución Industrial y los luditas (siglo XIX) -< la tecnología (máquinas textiles) se percibía como inevitable, obligando a la sociedad a adaptarse.
+Los Ángeles (1880–1950) -> Crecimiento urbano gracias al ferrocarril eléctrico.
+	General Motors, Standard Oil, Firestone y otras empresas conspiraron para desmantelar el sistema de tranvías y monopolizar el transporte en bus.
+Instagram -< organismo que regule la seguridad de los jóvenes en línea -> Implementaron medidas como “Take a break” y controles parentales. 
+	mostraron que Instagram agravaba problemas de imagen corporal en adolescentes.
+
+Facebook (Zuckerberg ante el senador Graham, EE. UU.) -> Zuckerberg aceptó que debe haber regulación “adecuada”.
+IA Generativa (IAGen) -> Mencionada como ejemplo actual de discusión sobre inevitabilidad tecnológica y necesidad de regulación
+Centros de Datos (Data & recursos) -> Se presentan como “proyectos de interés general”, con fuerte impacto económico y facilidades legales para acelerar su instalación.
+Google Glass y clones humanos -> fracasó como producto de consumo masivo.
+
+Uber en Buenos Aires (2016) -> Uber es un servicio “nuevo”, sin marco legal existente, lo que justificaría un trato especial. -> Se presentó como una “frontera” en varios sentidos: geográfica, legal, moral y tecnológica.
+Tesla y los autos autónomos (EE. UU.) -> Tras varios accidentes fatales en 2018 (Arizona, California, Virginia, Ohio), Musk criticó que Washington ponía “pedales de freno al progreso”.
+	“dejar que los innovadores innoven”.
+	Se muestra cómo la promesa de futuro pesa más que los daños presentes.
+Regulatory Sandbox -< Permite exención o flexibilidad regulatoria temporal para probar nuevos modelos de negocio.
+
+Destrucción creativa (Marx vs. Schumpeter)
+	Marx: la inestabilidad llevaría a la revolución.
+	Schumpeter: el capitalismo se reinventa constantemente, por lo que la revolución nunca llega
+	Hoy se usa en Silicon Valley con un sentido celebratorio para justificar disrupción constante.
+
+Gerente de RRHH vs. empleado (ejemplo narrativo) -> Una micro-situación de “frontera”: el futuro incierto del trabajador depende de la promesa de mejora.
+
+Caso uber -> Caso puntual: cuando Uber llegó a Argentina, muchos protestaron defendiendo su derecho individual a usar el auto como quisieran, con un lenguaje ético de autonomía.
+Wikipedia: Jimmy Wales se inspiró en Hayek y su idea de que el conocimiento centralizado siempre es incompleto. > La plataforma se construye con aportes de la vida ordinaria y conjunto llevando al conocimiento verdadero
+Ejemplos de espacios donde el conocimiento se valida colectivamente con “likes”, votos, hashtags, emojis.
+	Reflejan una ética donde la vida ordinaria se convierte en fuente legítima de conocimiento.
+
+Rating en estrellas de un uberista
+Uber en Buenos Aires: cuando un juez ordenó interrumpir actividades y el Ministro de Transporte advirtió que violaba la ley, Uber respondió que no se iría porque “la gente la había elegido”.
+FanDuel en Nueva York: al ser cuestionada por la fiscalía, la empresa defendió su legitimidad apelando a la popularidad entre cientos de miles de neoyorquinos.

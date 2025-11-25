@@ -105,9 +105,3 @@ Gerente de RRHH vs. empleado (ejemplo narrativo) -> Una micro-situación de “f
 
 Caso uber -> Caso puntual: cuando Uber llegó a Argentina, muchos protestaron defendiendo su derecho individual a usar el auto como quisieran, con un lenguaje ético de autonomía.
 Wikipedia: Jimmy Wales se inspiró en Hayek y su idea de que el conocimiento centralizado siempre es incompleto. > La plataforma se construye con aportes de la vida ordinaria y conjunto llevando al conocimiento verdadero
-Ejemplos de espacios donde el conocimiento se valida colectivamente con “likes”, votos, hashtags, emojis.
-	Reflejan una ética donde la vida ordinaria se convierte en fuente legítima de conocimiento.
-
-Rating en estrellas de un uberista
-Uber en Buenos Aires: cuando un juez ordenó interrumpir actividades y el Ministro de Transporte advirtió que violaba la ley, Uber respondió que no se iría porque “la gente la había elegido”.
-FanDuel en Nueva York: al ser cuestionada por la fiscalía, la empresa defendió su legitimidad apelando a la popularidad entre cientos de miles de neoyorquinos.

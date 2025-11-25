@@ -7,7 +7,6 @@ import mimetypes
 import gzip
 import io
 import time
-#FUNCIONES AUXILIARES
 
 def imprimir_qr_en_terminal(url):
     """Dada una URL la imprime por terminal como un QR"""
@@ -20,7 +19,7 @@ def imprimir_qr_en_terminal(url):
     qr.add_data(url)
     qr.make(fit=True)
 
-    qr.print_ascii(invert=True)
+    qr.print_ascii(invert=True) # Permite imprimir en la consola
 
 def get_wifi_ip():
     """Obtiene la IP local asociada a la interfaz de red (por ejemplo, Wi-Fi)."""
@@ -116,12 +115,28 @@ def generar_html_interfaz(modo):
 
 #CODIGO A COMPLETAR
 
+
+
 def manejar_descarga(archivo, request_line, usar_gzip=False, acepta_gzip=False):
     """
     Genera una respuesta HTTP con el archivo solicitado. 
     Si el archivo no existe debe devolver un error.
     Debe incluir los headers: Content-Type, Content-Length y Content-Disposition.
     """
+    # Usamos el parametro request_line para solo aceptar GET y /download.
+    try:
+        metodo = request_line.split(" ")[0]
+        ruta = request_line.split(" ")[1]
+    except:
+        return b"HTTP/1.1 400 Bad Request\r\n\r\n"
+
+    if metodo != "GET":
+        return b"HTTP/1.1 405 Method Not Allowed\r\nAllow: GET\r\n\r\n"
+
+    if ruta != "/download":
+        return b"HTTP/1.1 404 Not Found\r\n\r\n"
+    
+    # Error si el archivo no existe
     if not os.path.exists(archivo):
         respuesta = (
             "HTTP/1.1 404 Not Found\r\n"
@@ -130,42 +145,45 @@ def manejar_descarga(archivo, request_line, usar_gzip=False, acepta_gzip=False):
         )
         return respuesta.encode()
     
-    tipo, _ = mimetypes.guess_type(archivo)
+    # Adivina el tipo MIME del archivo
+    tipo = mimetypes.guess_type(archivo)[0]
     if tipo is None:
-        tipo = "application/octet-stream"
-    tamaño = os.path.getsize(archivo)
+        tipo = "application/octet-stream" # Esto es cuando no reconce el tipo
+    tamano = os.path.getsize(archivo)
     nombre_archivo = os.path.basename(archivo)
 
     with open(archivo, "rb") as f:
-        contenido = f.read()
+       contenido = f.read()
 
+    # Esto es para el caso en que se incluya el comando "gzip"
     if usar_gzip and acepta_gzip:
         buffer = io.BytesIO()
         with gzip.GzipFile(fileobj=buffer, mode="wb") as gz:
             gz.write(contenido)
         contenido = buffer.getvalue()
         content_encoding = "gzip"
-        print(f"[GZIP] Archivo comprimido: {len(contenido)} bytes (original {os.path.getsize(archivo)} bytes)")
+
+        # Experimentacion con gzip
+        print(f"Archivo comprimido: {len(contenido)} bytes (el original {os.path.getsize(archivo)} bytes)")
         ratio = os.path.getsize(archivo) / len(contenido)
-        print(ratio)
+        print(f"Ratio: {ratio}.")
     else:
         content_encoding = None
+
+    # Respuesta 200 OK con los headers Content-Type, Content-Length y Content-Disposition
+    tamano = len(contenido)
 
     headers = (
         f"HTTP/1.1 200 OK\r\n"
         f"Content-Type: {tipo}\r\n"
-        f"Content-Length: {tamaño}\r\n"
         f"Content-Disposition: attachment; filename=\"{nombre_archivo}\"\r\n"
-        f"\r\n"
     )
 
-    tamaño = len(contenido)
-
     if content_encoding:
-        headers += f"Content-Encoding: gzip\r\n"
+        headers += "Content-Encoding: gzip\r\n"
 
-    headers += "\r\n"
-    # Devolver respuesta completa (headers + contenido)
+    headers += f"Content-Length: {tamano}\r\n\r\n"
+
     return headers.encode() + contenido
 
 def manejar_carga(body, boundary, directorio_destino="."):
@@ -174,6 +192,7 @@ def manejar_carga(body, boundary, directorio_destino="."):
     """
     filename, file_content = parsear_multipart(body, boundary)
 
+    # Error cuando el archivo es invalido o vacio
     if not filename or not file_content:
         respuesta = (
             "HTTP/1.1 400 Bad Request\r\n"
@@ -182,13 +201,11 @@ def manejar_carga(body, boundary, directorio_destino="."):
         )
         return respuesta.encode()
     
+    # Se crea el directorio archivo_servidor donde se guardan los "uploads"
     os.makedirs(directorio_destino, exist_ok=True)
-
     ruta_destino = os.path.join(directorio_destino, filename)
     with open(ruta_destino, "wb") as f:
-        f.write(file_content)
-
-    print(f"Archivo recibido y guardado en: {ruta_destino}")
+       f.write(file_content)
 
     html = f"""
     <html>
@@ -201,6 +218,7 @@ def manejar_carga(body, boundary, directorio_destino="."):
     </html>
     """
 
+    # Se devuelve 200 OK junto con una pagina de confirmacion
     respuesta = (
         "HTTP/1.1 200 OK\r\n"
         "Content-Type: text/html\r\n"
@@ -212,100 +230,126 @@ def manejar_carga(body, boundary, directorio_destino="."):
 
 
 def start_server(archivo_descarga=None, modo_upload=False, usar_gzip=False):
-
-    """
-    Inicia el servidor TCP.
-    - Si se especifica archivo_descarga, se inicia en modo 'download'.
-    - Si modo_upload=True, se inicia en modo 'upload'.
-    """
-
-    # 1. Obtener IP local y poner al servidor a escuchar en un puerto aleatorio
-
+    #Inicializacion del servidor
     ip_server = get_wifi_ip()
     puerto = 5000
-    server_socket = socket(AF_INET, SOCK_STREAM)
 
+    server_socket = socket(AF_INET, SOCK_STREAM)
     server_socket.bind((ip_server, puerto))
     server_socket.listen(1)
 
-    # 2. Mostrar información del servidor y el código QR
-    # COMPLETAR: imprimir URL y modo de operación (download/upload)
-
     url = f"http://{ip_server}:{puerto}"
     print(f"Servidor inicializado en: {url}")
-    modo = ""
     if modo_upload:
-        modo = "UPLOAD"
-    else:
-        modo = "DOWNLOAD"
-
-    print(f"Modo: {modo}")
-
+        print("Modo:", "UPLOAD")
+    else: 
+        print("Modo:", "DOWNLOAD")
     imprimir_qr_en_terminal(url)
-    # 3. Esperar conexiones y atender un cliente
-    # COMPLETAR:
-    # - aceptar la conexión (accept)
+
     while True:
         client_socket, client_addr = server_socket.accept()
         print(f"Cliente conectado desde {client_addr}")
+        buffer = b""
+        while b"\r\n\r\n" not in buffer: # Lee hasta el fianl del header
+            chunk = client_socket.recv(10240)
+            if not chunk:
+                break
+            buffer += chunk # Acumula los bytes recibidos del encabezado
 
-        # - recibir los datos (recv)
+        if not buffer:
+            client_socket.close()
+            continue
 
-        request_data = client_socket.recv(10240).decode(errors='ignore')
-        print("Solicitud recibida:", request_data)
+        request_line = buffer.split(b"\r\n", 1)[0].decode(errors="ignore") # Se recibe GET /index.html HTTP/1.1
+        parts = request_line.split(" ") # Queda asi: ["GET", "/index.html", "HTTP/1.1"]
 
-        # - decodificar la solicitud HTTP
+        if len(parts) < 3:
+            client_socket.close()
+            continue
 
-        request_line = request_data.split('\r\n')[0]
-        method, path, _ = request_line.split(' ')
-        response = b""
+        method, path, version = parts
 
-        # - determinar método (GET/POST) y ruta (/ o /download)
-        # - generar la respuesta correspondiente (HTML o archivo)
+        # Cuando estamos en modo upload
         if modo_upload:
             if method == "GET":
+                # Devuelve el html con el formulario
                 html = generar_html_interfaz("upload")
                 response = (
                     "HTTP/1.1 200 OK\r\n"
                     "Content-Type: text/html\r\n"
+                    "Connection: close\r\n"
                     f"Content-Length: {len(html.encode())}\r\n\r\n"
                     + html
                 ).encode()
+
             elif method == "POST":
-                headers, body = request_data.split("\r\n\r\n", 1)
-                content_type_line = [h for h in headers.split("\r\n") if "Content-Type" in h][0]
-                boundary = content_type_line.split("boundary=")[1]
-                body_bytes = body.encode()
-                response = manejar_carga(body_bytes, boundary, "archivos_servidor")
+                headers_section, body = buffer.split(b"\r\n\r\n", 1)
+                # Obtiene Content-Length para saber cuantos bytes leer
+                content_length = 0
+                for line in headers_section.split(b"\r\n"):
+                    if line.lower().startswith(b"content-length:"):
+                        content_length = int(line.split(b":")[1].strip())
+                        break
+                # Sigue leyendo hasta completar el cuerpo POST
+                while len(body) < content_length:
+                    body += client_socket.recv(10240)
+
+                for line in headers_section.split(b"\r\n"):
+                    if b"boundary=" in line:
+                        boundary = line.split(b"boundary=")[1].decode()
+                        break
+
+                response = manejar_carga(body, boundary, "archivos_servidor")
+
             else:
-                response = b"HTTP/1.1 405 Method Not Allowed\r\n\r\n"
+                # Si no es GET o POST, devuelve error.
+                response = b"HTTP/1.1 405 Method Not Allowed\r\nConnection: close\r\n\r\n"
+        # Si es modo download
         else:
             if method == "GET":
                 if path == "/" or path == "/index.html":
+                    # Devuelve el html con la interfaz para descargar archivos
                     html = generar_html_interfaz("download")
+                   
                     response = (
                         "HTTP/1.1 200 OK\r\n"
                         "Content-Type: text/html\r\n"
+                        "Connection: close\r\n"
                         f"Content-Length: {len(html.encode())}\r\n\r\n"
                         + html
                     ).encode()
+
+
                 elif path == "/download":
-                    acepta_gzip = "Accept-Encoding: gzip" in request_data
+                    # Chequea si el cliente acepta gzip
+                    acepta_gzip = b"gzip" in buffer
                     inicio = time.time()
-                    response = manejar_descarga(archivo_descarga, request_line, usar_gzip=usar_gzip, acepta_gzip=acepta_gzip)
+                    response = manejar_descarga(
+                        archivo_descarga,
+                        request_line,
+                        usar_gzip,
+                        acepta_gzip
+                    )
                     fin = time.time()
-                    print(f"Tiempo de transferencia {'con' if usar_gzip else 'sin'} compresión: {fin - inicio:.4f} s")
+
+                    if usar_gzip:
+                        print(f"Tiempo de transferencia con compresion: {fin - inicio} s")
+                    else:
+                        print(f"Tiempo de transferencia sin compresion: {fin - inicio} s")
                 else:
+                    # Ruta no encontrada
                     response = (
                         "HTTP/1.1 404 Not Found\r\n"
-                        "Content-Type: text/html\r\n\r\n"
+                        "Content-Type: text/html\r\n"
+                        "Connection: close\r\n\r\n"
                         "<h1>404 Not Found</h1>"
                     ).encode()
 
         client_socket.sendall(response)
         client_socket.close()
         print("Conexión cerrada. Esperando nuevo cliente...")
-    server_socket.close()
+
+    
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:

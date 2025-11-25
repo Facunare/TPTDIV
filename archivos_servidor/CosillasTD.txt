@@ -1,0 +1,67 @@
+R*dProp
+el paquete ocupa vprop*dtrans
+dtrans > dprop
+dtrans < dprop
+dtrans = dprop y min(L, R*dProp)
+pipelining
+TCP y sus valores
+UDP y sus valores
+client socket
+welcoming socket, siempre escuchando
+connection socket tcp.
+SMTP entre alina y benja
+no se tiene en cuenta el guardado en cache
+RR = (nombre, valor, tipo)
+si, es posible que tengan mismo nombre
+
+A, NS, CNAME, MX
+Que es NS
+Que es TLD
+Pueden tener mismo puerto? Si, son unicos por la IP
+Seteo el timer en...
+	No olvidar ida y vuelta
++1, y ack acumulativo
+Close, syn_sent y established
+Cuantos bytes de PL envio B? Ultimo ack A - seq en el que nace B - flag syn - flag fin
+three way handshake
+
+ACKs dups no aumentan cwnd
+TCP manda ACK del ultimo byte recibido
+"hasta que puede ser enviada la rwnd completa"
+SS, CA, FAST RECOVERY
+RTT9 -> Fast retransmit
+Caso donde no se duplica la cwnd
+cwnd = cwnd + MSS*MSS/cwnd
+Los 3 casos de cierre de conexion
+Apertura activa
+Apertura con perdida de ACK
+
+bytes que falta enviar = LBW-LBS
+bytes en vuelo = LBS - LBA
+LBA = mayor#ACK - 1
+LBS = menor#SEQ + PL - 1
+Ejemplo
+Siendo N la cant de paquetes y k la cant de enlaces: (N-1)dtrans + kdtrans +dproc +dprop
+Grafico DNS
+Texto DNS
+GET / HTTP/1.1
+Pasa por FW1 el que inicia el cierre
+
+en el ack acumulativo aumenta el SEQ
+RTO, SAMPLERTT y EstimatedRTT
+"Si se pierden segmentos" y "no corrompe paquetes"
+
+Llegan cada LN/R
+Ancho del bit = m/R*dprop
+Ajustar la RWND
+TIME_WAIT
+Valor minimo de L para transmitir siempre
+
+
+
+
+
+
+
+
+
